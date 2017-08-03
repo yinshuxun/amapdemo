@@ -8,7 +8,7 @@
 	},
 	"dependencies": {
 		"react": "16.0.0-alpha.6",
-		"react-native": "0.44.3",
+		"react-native": "0.47.1",
 		"react-native-smart-amap": "^1.0.7"
 	},
 	"devDependencies": {
