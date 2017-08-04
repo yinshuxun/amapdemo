@@ -2975,9 +2975,9 @@ react-devtools-core@^2.0.8:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
-react-native-smart-amap@^1.0.7:
+"react-native-smart-amap@git+https://github.com/MICUED/react-native-smart-amap":
   version "1.0.7"
-  resolved "https://registry.npmjs.org/react-native-smart-amap/-/react-native-smart-amap-1.0.7.tgz#0eb0770b352e65741dcbf4f34fca2bd5986efa65"
+  resolved "git+https://github.com/MICUED/react-native-smart-amap#7a2fd2875797a3572265262e429d2bb7507088d8"
 
 react-native@0.44.3:
   version "0.44.3"

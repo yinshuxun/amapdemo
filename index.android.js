@@ -30,7 +30,7 @@ class AMapDemo extends Component {
   constructor(props) {
     super(props)
     this._amap = null
-    this.num = 1
+    this.centerMarkerId = null
   }
 
   render() {
@@ -53,7 +53,7 @@ class AMapDemo extends Component {
             latitude: 32.168098,
             longitude: 118.703891
           },
-          zoomLevel: 10,
+          zoomLevel: 15,
           centerMarker: Platform.OS == 'ios' ? 'icon_location' : 'poi_marker',
         }}
         onDidMoveByUser={this._onDidMoveByUser}
@@ -63,19 +63,27 @@ class AMapDemo extends Component {
   }
 
   _onClickMarker(opt) {
-    ToastAndroid.show('点击了 marker', ToastAndroid.SHORT);
-    this._amap.showMarker({
-      latitude: 32.168098,
-      longitude: 118.706173
-    }, "坐标一号")
-    this._amap.showMarker({
-      latitude: 32.167808,
-      longitude: 118.708293
-    }, "坐标二号")
-    this._amap.showMarker({
-      latitude: 32.16767,
-      longitude: 118.711329
-    }, "坐标三号")
+    if(!this.centerMarkerId){
+      this._amap.showMarker({
+        latitude: 32.168098,
+        longitude: 118.706173
+      }, "坐标一号")
+      this._amap.showMarker({
+        latitude: 32.167808,
+        longitude: 118.708293
+      }, "坐标二号")
+      this._amap.showMarker({
+        latitude: 32.16767,
+        longitude: 118.711329
+      }, "坐标三号")
+    }else{
+      this.centerMarkerId = opt.nativeEvent.marketId
+    }
+    if(opt.nativeEvent.marketState){
+      ToastAndroid.show(`${opt.nativeEvent.marketState} 了 ${opt.nativeEvent.marketId}`, ToastAndroid.SHORT);
+    }else{
+      ToastAndroid.show(`点击了 ${opt.nativeEvent.marketId}`, ToastAndroid.SHORT);
+    }
   }
 
   _onDidMoveByUser() {
